@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/splash"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:layout_width="229dp"
+        android:layout_height="134dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="73dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo" />
+</RelativeLayout>
