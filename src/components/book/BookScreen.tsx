@@ -18,8 +18,6 @@ const BookScreen = () => {
             <Search
                 placeholder={'Tìm kiếm kệ sách'}
             />
-
-            
             <OptionTab
                 labelAdd={'Thêm sách'}
                 labelFilter={'Lọc sách'}
