@@ -10,8 +10,14 @@ import Search from '../utils/Search';
 import OptionTab from '../utils/OptionTab';
 import ListBookShelf from './ListBookShelf';
 import ModalFilter from './ModalFilter';
+import { useNavigation } from '@react-navigation/core';
 const BookScreen = () => {
     const refModalFilter = useRef(null);
+    const navigation = useNavigation();
+    const onPressAdd = () => {
+        navigation.navigate('AppStack', { screen: 'AddBook' });
+    }
+
     return (
         <View style={styles.contain}>
             <HeaderScreen />
@@ -20,6 +26,7 @@ const BookScreen = () => {
             />
             <OptionTab
                 labelAdd={'Thêm sách'}
+                onPressAdd={onPressAdd}
                 labelFilter={'Lọc sách'}
                 onPressFilter={() => {
                     refModalFilter.current.showModal();

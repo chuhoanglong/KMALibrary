@@ -12,13 +12,14 @@ export default class OptionTab extends Component {
             labelFilter,
             onPressFilter,
             labelSort,
+            onPressAdd
         } = this.props;
         return (
             <View style={{ alignSelf: 'flex-end' }}>
                 <Row>
                     {
                         labelAdd &&
-                        <RippleButton viewStyle={styles.styWrapIcon}>
+                        <RippleButton viewStyle={styles.styWrapIcon} onPress={onPressAdd}>
                             <Ionicons name={'add'} size={16} />
                             <Text style={styles.styLabel}>{labelAdd}</Text>
                         </RippleButton>
@@ -38,7 +39,7 @@ export default class OptionTab extends Component {
                         </RippleButton>
                     }
                 </Row>
-            </View>
+            </View >
         );
     }
 }

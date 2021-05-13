@@ -1,9 +1,10 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../components/main/Home';
-import Dashboard from '../components/main/Dashboard';
+// import Dashboard from '../components/main/Dashboard';
 import { GESTURES_ENABLE, HEADER_ENABLE } from '../constants/Setting';
 import TabMain from '../components/tab-main/TabMain';
+import AppStack from './AppStack';
 const Stack = createStackNavigator();
 
 function AppNavigator() {
@@ -17,17 +18,17 @@ function AppNavigator() {
                     headerShown: HEADER_ENABLE
                 }}
             />
-            <Stack.Screen
+            {/* <Stack.Screen
                 name="Dashboard"
                 component={Dashboard}
                 options={{
                     gestureEnabled: GESTURES_ENABLE,
                     headerShown: HEADER_ENABLE
                 }}
-            />
+            /> */}
             <Stack.Screen
-                name="Home"
-                component={Home}
+                name="AppStack"
+                component={AppStack}
                 options={{
                     gestureEnabled: GESTURES_ENABLE,
                     headerShown: HEADER_ENABLE
