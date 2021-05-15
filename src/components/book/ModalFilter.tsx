@@ -49,69 +49,71 @@ export default class ModalFilter extends Component {
             <Modal visible={visible} transparent={true}>
                 <TouchableWithoutFeedback onPress={this.closeModal}>
                     <View style={styles.contain}>
-                        <Animated.View
-                            style={[styles.styWrapModal, {
-                                transform: [{ translateX: transformX }]
-                            }]}
-                        >
-                            <SafeAreaView>
-                                <Row>
-                                    <Text style={styles.styHeader}>Lọc sách</Text>
-                                    <RippleButton rippleSize={30}>
-                                        <IconFeather name={'refresh-ccw'} size={25} />
-                                    </RippleButton>
-                                </Row>
+                        <TouchableWithoutFeedback>
+                            <Animated.View
+                                style={[styles.styWrapModal, {
+                                    transform: [{ translateX: transformX }]
+                                }]}
+                            >
+                                <SafeAreaView>
+                                    <Row>
+                                        <Text style={styles.styHeader}>Lọc sách</Text>
+                                        <RippleButton rippleSize={30}>
+                                            <IconFeather name={'refresh-ccw'} size={25} />
+                                        </RippleButton>
+                                    </Row>
 
-                                <OptionSelecter
-                                    data={dataAuthor}
-                                    placeholder={dataAuthor[0].label}
-                                    value={dataAuthor[0].value}
-                                    icon={'edit'}
-                                    onValueChange={() => { }}
-                                />
+                                    <OptionSelecter
+                                        data={dataAuthor}
+                                        placeholder={dataAuthor[0].label}
+                                        value={dataAuthor[0].value}
+                                        icon={'edit'}
+                                        onValueChange={() => { }}
+                                    />
 
-                                <OptionSelecter
-                                    data={dataPublishing}
-                                    placeholder={dataPublishing[0].label}
-                                    value={dataPublishing[0].value}
-                                    icon={'printer'}
-                                    onValueChange={() => { }}
-                                />
+                                    <OptionSelecter
+                                        data={dataPublishing}
+                                        placeholder={dataPublishing[0].label}
+                                        value={dataPublishing[0].value}
+                                        icon={'printer'}
+                                        onValueChange={() => { }}
+                                    />
 
-                                <OptionSelecter
-                                    data={dataYearPublishing}
-                                    placeholder={dataYearPublishing[0].label}
-                                    value={dataYearPublishing[0].value}
-                                    icon={'calendar'}
-                                    onValueChange={() => { }}
-                                />
+                                    <OptionSelecter
+                                        data={dataYearPublishing}
+                                        placeholder={dataYearPublishing[0].label}
+                                        value={dataYearPublishing[0].value}
+                                        icon={'calendar'}
+                                        onValueChange={() => { }}
+                                    />
 
-                                <OptionSelecter
-                                    data={dataCategory}
-                                    placeholder={dataCategory[0].label}
-                                    value={dataCategory[0].value}
-                                    icon={'book'}
-                                    onValueChange={() => { }}
-                                />
+                                    <OptionSelecter
+                                        data={dataCategory}
+                                        placeholder={dataCategory[0].label}
+                                        value={dataCategory[0].value}
+                                        icon={'book'}
+                                        onValueChange={() => { }}
+                                    />
 
-                                <OptionSelecter
-                                    data={dataLanguage}
-                                    placeholder={dataLanguage[0].label}
-                                    value={dataLanguage[0].value}
-                                    icon={'cloudo'}
-                                    onValueChange={() => { }}
-                                />
+                                    <OptionSelecter
+                                        data={dataLanguage}
+                                        placeholder={dataLanguage[0].label}
+                                        value={dataLanguage[0].value}
+                                        icon={'cloudo'}
+                                        onValueChange={() => { }}
+                                    />
 
-                                <OptionSelecter
-                                    data={dataReadingStatus}
-                                    placeholder={dataReadingStatus[0].label}
-                                    value={dataReadingStatus[0].value}
-                                    icon={'solution1'}
-                                    onValueChange={() => { }}
-                                />
+                                    <OptionSelecter
+                                        data={dataReadingStatus}
+                                        placeholder={dataReadingStatus[0].label}
+                                        value={dataReadingStatus[0].value}
+                                        icon={'solution1'}
+                                        onValueChange={() => { }}
+                                    />
 
-                            </SafeAreaView>
-                        </Animated.View>
+                                </SafeAreaView>
+                            </Animated.View>
+                        </TouchableWithoutFeedback>
                     </View>
                 </TouchableWithoutFeedback>
             </Modal>

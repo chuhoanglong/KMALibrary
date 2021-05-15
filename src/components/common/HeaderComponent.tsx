@@ -7,18 +7,19 @@ import { NavigationProp } from '@react-navigation/core';
 import { fontRegular, fontRegularBold } from '../../themes/fontFamily';
 
 interface PropsHeaderComponent {
-    iconRight: string;
-    isRight: boolean;
-    navigation: NavigationProp<any>;
+    iconRight?: string;
+    isRight?: boolean;
+    navigation?: NavigationProp<any>;
     title?: string;
+    onPress?: () => void;
 }
 
 const HeaderComponent = (props: PropsHeaderComponent) => {
 
-    const { iconRight, isRight, title, navigation } = props;
+    const { iconRight, isRight, title, navigation, onPress } = props;
 
     const goBack = () => {
-        navigation.goBack();
+        navigation?.goBack();
     }
 
     return (
@@ -28,8 +29,8 @@ const HeaderComponent = (props: PropsHeaderComponent) => {
             </RippleButton>
             <Text style={styles.styTxtTitle}>{title}</Text>
             {isRight ?
-                <RippleButton style={styles.styBtnRight}>
-                    <IconAntDesign name={iconRight} size={30} />
+                <RippleButton style={styles.styBtnRight} onPress={onPress}>
+                    <IconAntDesign name={iconRight || ''} size={30} />
                 </RippleButton>
                 :
                 <View style={styles.styBtnRight} />

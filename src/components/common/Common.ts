@@ -72,7 +72,12 @@ export const androidCameraPermissionOptions = {
     buttonNegative: 'cancel',
 }
 
+export const getLinkBarCode = (value: string) => {
+    return `https://barcode.tec-it.com/barcode.ashx?data=${value}&code=Code128&translate-esc=on`
+}
+
 module.exports = {
     checkPermissionCamera,
-    androidCameraPermissionOptions
+    androidCameraPermissionOptions,
+    getLinkBarCode,
 }

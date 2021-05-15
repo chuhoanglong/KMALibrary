@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     styWrapContent: {
-        padding: 20,
+        marginHorizontal: 20,
+        flex: 1,
     },
     styImg: {
         width: 100,
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
         fontSize: Platform.SizeScale(16),
         fontFamily: fontRegular,
         flex: 1,
-        justifyContent:'space-around'
+        justifyContent: 'space-around'
     }
 });
 

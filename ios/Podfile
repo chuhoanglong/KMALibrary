@@ -57,8 +57,8 @@ def find_and_replace(dir, findstr, replacestr)
   Dir[dir + '*/'].each(&method(:find_and_replace))
 end
 
-target 'Navig8Connect' do
-  # Pods for Navig8Connect
+target 'KMALibrary' do
+  # Pods for KMALibrary
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -100,7 +100,7 @@ target 'Navig8Connect' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
-  target 'Navig8ConnectTests' do
+  target 'KMALibraryTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -121,10 +121,10 @@ target 'Navig8Connect' do
   end
 end
 
-target 'Navig8Connect-tvOS' do
-  # Pods for Navig8Connect-tvOS
+target 'KMALibrary-tvOS' do
+  # Pods for KMALibrary-tvOS
 
-  target 'Navig8Connect-tvOSTests' do
+  target 'KMALibrary-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

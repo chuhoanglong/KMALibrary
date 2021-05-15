@@ -11,8 +11,10 @@ import OptionTab from '../utils/OptionTab';
 import ListBookShelf from './ListBookShelf';
 import ModalFilter from './ModalFilter';
 import { useNavigation } from '@react-navigation/core';
+import ModalBookshelf from './ModalBookshelf';
 const BookScreen = () => {
-    const refModalFilter = useRef(null);
+    const refModalFilter: any = useRef();
+    const refModalBookshelf: any = useRef();
     const navigation = useNavigation();
     const onPressAdd = () => {
         navigation.navigate('AppStack', { screen: 'AddBook' });
@@ -25,16 +27,21 @@ const BookScreen = () => {
                 placeholder={'Tìm kiếm kệ sách'}
             />
             <OptionTab
+                labelAddKS={'Thêm kệ'}
+                onPressAddKS={() => {
+                    refModalBookshelf?.current?.showModal();
+                }}
                 labelAdd={'Thêm sách'}
                 onPressAdd={onPressAdd}
                 labelFilter={'Lọc sách'}
                 onPressFilter={() => {
-                    refModalFilter.current.showModal();
+                    refModalFilter?.current?.showModal();
                 }}
                 labelSort={'Sắp xếp'}
             />
             <ListBookShelf data={Array.from(Array(10).keys())} />
             <ModalFilter ref={refModalFilter} />
+            <ModalBookshelf ref={refModalBookshelf} />
         </View>
     )
 }

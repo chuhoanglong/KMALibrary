@@ -16,7 +16,8 @@ const FormInput = (props: PropsFormInput) => {
         label = '',
         icon = '',
         keyboardType = 'default',
-        onChangText = txt => { }
+        onChangText = txt => { },
+        autoFocus = false,
     } = props;
 
     return (
@@ -36,6 +37,7 @@ const FormInput = (props: PropsFormInput) => {
                 }}
                 onChangeText={onChangText}
                 keyboardType={keyboardType}
+                autoFocus={autoFocus}
             />
         </View>
     );

@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.navig8connect"
+        applicationId "com.chl.kmalibrary"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

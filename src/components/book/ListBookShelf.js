@@ -8,9 +8,9 @@ export default class ListBookShelf extends Component {
     renderItem = ({ item }) => {
 
         return (
-            <View style={styles.styWrapElement}>
+            <RippleButton style={styles.styWrapElement}>
                 <Text>Kệ sách số {item}</Text>
-            </View>
+            </RippleButton>
         );
     }
 
