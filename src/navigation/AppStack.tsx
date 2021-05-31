@@ -2,7 +2,12 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import AddBookScreen from '../components/addBook/AddBookScreen';
 import GenerationQRCode from '../components/addBook/GenerationQRCode';
+import BookShelfDetail from '../components/bookShelfDetail/BookShelfDetail';
+import BorrowBooks from '../components/borrowBooks/BorrowBooks';
 import { GESTURES_ENABLE, HEADER_ENABLE } from '../constants/Setting';
+import BookInfo from '../components/bookInfo/BookInfo';
+import InfoReader from '../components/InfoReader/InfoReader';
+import BookReaderDetail from '../components/bookReaderDetail/BookReaderDetail';
 
 const Stack = createStackNavigator();
 
@@ -25,8 +30,48 @@ function AppStack() {
           headerShown: HEADER_ENABLE
         }}
       />
+      <Stack.Screen
+        name="BookShelfDetail"
+        component={BookShelfDetail}
+        options={{
+          gestureEnabled: GESTURES_ENABLE,
+          headerShown: HEADER_ENABLE
+        }}
+      />
+      <Stack.Screen
+        name="BookInfo"
+        component={BookInfo}
+        options={{
+          gestureEnabled: GESTURES_ENABLE,
+          headerShown: HEADER_ENABLE
+        }}
+      />
+      <Stack.Screen
+        name="BorrowBooks"
+        component={BorrowBooks}
+        options={{
+          gestureEnabled: GESTURES_ENABLE,
+          headerShown: HEADER_ENABLE
+        }}
+      />
+      <Stack.Screen
+        name="InfoReader"
+        component={InfoReader}
+        options={{
+          gestureEnabled: GESTURES_ENABLE,
+          headerShown: HEADER_ENABLE
+        }}
+      />
+      <Stack.Screen
+        name="BookReaderDetail"
+        component={BookReaderDetail}
+        options={{
+          gestureEnabled: GESTURES_ENABLE,
+          headerShown: HEADER_ENABLE
+        }}
+      />
     </Stack.Navigator>
   );
-};
+}
 
 export default AppStack;

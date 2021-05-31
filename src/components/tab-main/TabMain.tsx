@@ -33,6 +33,7 @@ function TabMain() {
                 options={{
                     tabBarIcon: ({ color }) => <Icon name={'qrcode'} size={25} color={color} />,
                     tabBarButton: (props) => <ButtonTabQrCode {...props} />,
+                    unmountOnBlur: true
                 }}
             />
             <Tab.Screen

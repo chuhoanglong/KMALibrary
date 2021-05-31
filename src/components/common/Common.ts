@@ -76,8 +76,41 @@ export const getLinkBarCode = (value: string) => {
     return `https://barcode.tec-it.com/barcode.ashx?data=${value}&code=Code128&translate-esc=on`
 }
 
+export const shadow = {
+    shadowColor: "#000",
+    shadowOffset: {
+        width: 0,
+        height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
+    backgroundColor: '#FFF',
+};
+
+export const noImage = 'https://lasd.lv/public/assets/no-image.png';
+
+export const getStatus = (startTime: any, endTime: any) => {
+    const start = new Date(startTime).getTime();
+    const end = new Date(endTime).getTime();
+    const current = new Date().getTime();
+
+    let status = '';
+
+    if (end < current) {
+        status = 'hết hạn mượn';
+    } else if (end > current) {
+        status = 'còn hạn mượn';
+    }
+    return status;
+}
+
 module.exports = {
     checkPermissionCamera,
     androidCameraPermissionOptions,
     getLinkBarCode,
+    shadow,
+    noImage,
+    getStatus,
 }

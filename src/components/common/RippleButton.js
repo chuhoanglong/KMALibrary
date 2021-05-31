@@ -33,6 +33,13 @@ export default class RippleButton extends React.PureComponent {
         });
     }
 
+    onLongPress = (event) => {
+        const { onLongPress } = this.props;
+        if ('function' === typeof onLongPress) {
+            onLongPress(event);
+        }
+    }
+
     render() {
         const { rippleColor, style, rippleSize, rippleDuration, disabled, viewStyle } = this.props;
         return (
@@ -46,6 +53,7 @@ export default class RippleButton extends React.PureComponent {
                 onPressIn={this.onPressIn}
                 onPressOut={this.onPressOut}
                 onPress={this.onPress}
+                onLongPress={this.onLongPress}
             >
                 <View style={[{ backgroundColor: this.state.rippleColor }, viewStyle]}>
                     {this.props.children}

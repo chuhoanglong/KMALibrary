@@ -46,6 +46,52 @@ export const dataReadingStatus = [
     { label: 'Tiếng việt', value: '' },
 ];
 
+export const dataBookShelf = [
+    {
+        nameShelf: 'Kệ sách số 0',
+        shelfId: '0',
+        totalBook: 100,
+        totalReader: 10,
+    },
+    {
+        nameShelf: 'Kệ sách số 1',
+        shelfId: '1',
+        totalBook: 100,
+        totalReader: 10,
+    },
+    {
+        nameShelf: 'Kệ sách số 2',
+        shelfId: '2',
+        totalBook: 100,
+        totalReader: 10,
+    },
+    {
+        nameShelf: 'Kệ sách số 3',
+        shelfId: '3',
+        totalBook: 100,
+        totalReader: 10,
+    },
+    {
+        nameShelf: 'Kệ sách số 4',
+        shelfId: '4',
+        totalBook: 100,
+        totalReader: 10,
+    },
+    {
+        nameShelf: 'Kệ sách số 5',
+        shelfId: '5',
+        totalBook: 100,
+        totalReader: 10,
+    },
+    {
+        nameShelf: 'Kệ sách số 5',
+        shelfId: '5',
+        totalBook: 100,
+        totalReader: 10,
+    },
+
+];
+
 module.exports = {
     dataAuthor,
     dataPublishing,
@@ -53,4 +99,5 @@ module.exports = {
     dataCategory,
     dataLanguage,
     dataReadingStatus,
+    dataBookShelf,
 }

@@ -3,9 +3,12 @@ import { Text, View, StyleSheet, Dimensions, StatusBar } from 'react-native';
 import { useBarcodeRead, BarcodeMaskWithOuterLayout } from '@nartc/react-native-barcode-mask';
 import { RNCamera } from 'react-native-camera';
 import { androidCameraPermissionOptions } from '../common/Common';
+import _ from 'lodash';
+import { useNavigation } from '@react-navigation/core';
 const { width, height } = Dimensions.get('window');
 export default function QrCodeScreen() {
     const [isbarcodeRead, setbarcodeRead] = useState(true);
+    const navigation = useNavigation();
     const {
         barcodeRead,
         onBarcodeRead,
@@ -13,8 +16,11 @@ export default function QrCodeScreen() {
     } = useBarcodeRead(
         isbarcodeRead,
         data => {
-            console.log('data', data);
-            setbarcodeRead(false);
+            if (!_.isEmpty(data)) {
+                navigation.navigate('AppStack', { screen: 'InfoReader' });
+                console.log('data', data);
+                setbarcodeRead(false);
+            }
         },
         processed => {
             console.log('processed', processed);
@@ -22,7 +28,7 @@ export default function QrCodeScreen() {
     );
     return (
         <View style={styles.styContain}>
-            <StatusBar barStyle={'light-content'} />
+            {/* <StatusBar barStyle={'light-content'} /> */}
             <Text style={styles.styTxtHeader}>
                 Quét mã vạch, QR code, trên bìa sách hoặc thẻ sinh viên để thực hiện tìm kiếm.
             </Text>

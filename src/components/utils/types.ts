@@ -23,4 +23,5 @@ export interface PropsFormInput {
     onChangText?: (text: string) => void;
     keyboardType?: KeyboardTypeOptions,
     autoFocus?: boolean;
+    disable?: boolean;
 }

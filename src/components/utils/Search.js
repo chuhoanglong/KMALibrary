@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
+import { fontRegular } from '../../themes/fontFamily';
+import { shadow } from '../common/Common';
 const Search = (props) => {
     const { placeholder, label } = props;
     return (
-        <View style={styles.contain}>
+        <View style={[styles.contain, shadow]}>
             <TextInput
                 placeholder={placeholder}
                 style={styles.styInput}
@@ -27,20 +29,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 5,
         margin: 10,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-
-        elevation: 5,
-        backgroundColor: '#FFF'
     },
     styInput: {
         padding: 10,
         color: '#000',
-        fontFamily: 'Nunito-Regular'
+        fontFamily: fontRegular,
+        flex: 1,
     }
 });

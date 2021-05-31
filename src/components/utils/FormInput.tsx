@@ -18,6 +18,7 @@ const FormInput = (props: PropsFormInput) => {
         keyboardType = 'default',
         onChangText = txt => { },
         autoFocus = false,
+        disable = false,
     } = props;
 
     return (
@@ -38,6 +39,7 @@ const FormInput = (props: PropsFormInput) => {
                 onChangeText={onChangText}
                 keyboardType={keyboardType}
                 autoFocus={autoFocus}
+                editable={!disable}
             />
         </View>
     );
