@@ -1,0 +1,184 @@
+GET http: //localhost:3000/client/user;
+###
+
+POST http: //localhost:3000/kma/bookshelf/add
+Content-Type: application/json
+
+{
+    "ten_ke": "Ke so 04",
+    "tong_so_sach": 20,
+    "da_muon": 5
+}
+
+###
+# api sửa kệ sách.ObjectId("60a7dce5f2ea183d251b63f9")
+POST http: //localhost:3000/kma/bookshelf/edit
+Content-Type: application/json
+
+{
+    "id": "60a7dce5f2ea183d251b63f9",
+    "ten_ke": "Ke sach doi ten"
+}
+
+###
+# xoá kệ sách
+POST http: //localhost:3000/kma/bookshelf/delete
+Content-Type: application/json
+
+{
+    "id": "60a7dc50f2ea183d251b6380"
+}
+
+###
+# thêm sách
+POST http: //localhost:3000/kma/books/add
+Content-Type: application/json
+
+{
+    "ten_sach": "Lập trình java 0",
+    "ten_ke": "Ke so 01",
+    "ma_ke": "60a7dcddf2ea183d251b63e6",
+    "ten_tac_gia": [
+        "Nguyễn Văn A",
+        "Nguyễn Văn B"
+    ],
+    "nha_xuat_ban": "03/20/2000",
+    "ngay_xuat_ban": "Kim Đồng",
+    "so_trang": 200,
+    "gia_sach": 2000000,
+    "the_loai": "Sách tham khảo",
+    "ngon_ngu": "Tiếng Việt",
+    "images": "https://m.media-amazon.com/images/I/51EWRgaqIKL.jpg",
+    "so_luong": 100,
+    "mo_ta": "Sách hướng dẫn dạy lập trình",
+    "series": "Lập trình java",
+    "tap": "Tập 1"
+}
+
+
+###
+# sửa sách
+POST http: //localhost:3000/kma/books/edit
+Content-Type: application/json
+
+{
+    "id": "60aba641f2ea183d251b8638",
+    "ten_sach": "Lập trình java sua ten",
+    "ten_ke": "Ke so 01",
+    "ma_ke": "60a7dcddf2ea183d251b63e6",
+    "ten_tac_gia": [
+        "Nguyễn Văn A",
+        "Nguyễn Văn B"
+    ],
+    "nha_xuat_ban": "03/20/2000",
+    "ngay_xuat_ban": "Kim Đồng",
+    "so_trang": 200,
+    "gia_sach": 2000000,
+    "the_loai": "Sách tham khảo",
+    "ngon_ngu": "Tiếng Việt",
+    "images": "https://m.media-amazon.com/images/I/51EWRgaqIKL.jpg",
+    "so_luong": 100,
+    "mo_ta": "Sách hướng dẫn dạy lập trình",
+    "series": "Lập trình java",
+    "tap": "Tập 1"
+}
+
+###
+POST http: //localhost:3000/kma/books/delete
+Content-Type: application/json
+
+{
+    "id": "60aba641f2ea183d251b8638"
+}
+
+###
+# tìm mã sách
+POST http: //localhost:3000/kma/books/search
+Content-Type: application/json
+
+{
+    "ma_sach": "KMA1621872353542"
+}
+
+###
+POST http: //localhost:3000/kma/students/add
+Content-Type: application/json
+
+{
+    "ten_sinh_vien": "Trần Văn Cường",
+    "avatar": "https://storage.ctu.edu.vn/stcard/images/B2001800.jpg",
+    "msv": "CT010115",
+    "nien_khoa": "2016-2021",
+    "lop": "CT1A"
+}
+
+###
+POST http: //localhost:3000/students/edit
+Content-Type: application/json
+
+{
+    "ten_sinh_vien": "Nguyễn Văn AA",
+    "avatar": "https://storage.ctu.edu.vn/stcard/images/B2001800.jpg",
+    "msv": "CT010112",
+    "nien_khoa": "2016-2021",
+    "lop": "CT1A"
+}
+
+###
+# xoá sinh viên
+POST http: //localhost:3000/students/delete
+Content-Type: application/json
+
+{
+    "msv": "CT0101122"
+}
+
+
+###
+# tìm kiếm sinh viên
+POST http: //localhost:3000/kma/students/search
+Content-Type: application/json
+Authorization: Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzEyMyIsImlhdCI6MTYyMjYzNzkzMCwiZXhwIjoxNjIyNjM3OTYwfQ.eHv2mqVhZE1flWGHun_sL8ftX2k4YGNbsyfZqCOj7ug
+
+{
+    "ten_sinh_vien": "Trần"
+}
+
+###
+POST http: //localhost:3000/users/add
+Content-Type: application/json
+
+{
+    "first_name": "Nguye",
+    "last_name": "Van",
+    "email": "nguyenvan@gmail.com",
+    "gender": "nam",
+    "user_name": "nguyenvan",
+    "password": "123123",
+    "avatar": ""
+}
+
+###
+POST http: //localhost:3300/login
+Content-Type: application/json
+
+{
+    "email": "abc@gmail.com",
+    "password": "123123"
+}
+
+###
+POST http: //localhost:3300/refreshToken
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzEyMyIsImlhdCI6MTYyMjgxNjIxNn0.vTrkTY3Ajs1tmcTt1w4O56egNFZ8Uhh48vd--scdIx0"
+}
+
+###
+POST http: //localhost:3300/logout
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzEyMyIsImlhdCI6MTYyMjgxNjIxNn0.vTrkTY3Ajs1tmcTt1w4O56egNFZ8Uhh48vd--scdIx0"
+}

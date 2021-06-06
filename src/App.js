@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import RootNavigator from './navigation';
 import store from './store';
 import rootSaga from './sagas';
-// import sagaMiddleware from './middleware/sagaMiddleware';
+import sagaMiddleware from './middleware/sagaMiddleware';
 import SplashScreen from 'react-native-splash-screen';
 
 export default class App extends Component {
@@ -25,4 +25,4 @@ export default class App extends Component {
     }
 }
 
-// sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);

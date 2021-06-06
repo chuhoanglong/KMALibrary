@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ReaderScreen from '../../components/reader/ReaderScreen';
+import ReaderScreen from '../../screens/reader/ReaderScreen';
 
 const mapStateToProps = state => {
     return {

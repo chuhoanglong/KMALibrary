@@ -74,7 +74,7 @@ const AddBookScreen = (props: PropsAddBook) => {
       <KeyboardAvoidingView
         behavior={Platform.OS == 'ios' ? 'height' : 'padding'}
         style={{ flex: 1 }}
-        keyboardVerticalOffset={120}
+        // keyboardVerticalOffset={120}
       >
         <ScrollView
           style={styles.styWrapContent}

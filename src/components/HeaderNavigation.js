@@ -36,7 +36,7 @@ export default class HeaderNavigation extends React.Component {
                         <View style={styles.button}>
                             <Image
                                 style={{ tintColor: color }}
-                                source={require('../../assets/icon/icon_arrowLeftv3.png')}
+                                source={require('../assets/icon/icon_arrowLeftv3.png')}
                             />
                         </View>
                     </TouchableWithoutFeedback>

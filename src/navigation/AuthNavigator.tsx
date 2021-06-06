@@ -1,8 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { GESTURES_ENABLE } from '../constants/Setting';
-import LoginOptions from '../container/LoginOptionsContainer';
-import LoginOnADFS from '../components/auth/LoginOnADFS';
+import LoginScreen from '../screens/login/Index';
 
 const Stack = createStackNavigator();
 
@@ -11,15 +10,7 @@ function AuthNavigator() {
         <Stack.Navigator>
             <Stack.Screen
                 name="LoginOptions"
-                component={LoginOptions}
-                options={{
-                    gestureEnabled: GESTURES_ENABLE,
-                    headerShown: false
-                }}
-            />
-            <Stack.Screen
-                name="LoginOnADFS"
-                component={LoginOnADFS}
+                component={LoginScreen}
                 options={{
                     gestureEnabled: GESTURES_ENABLE,
                     headerShown: false

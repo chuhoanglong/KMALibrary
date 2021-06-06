@@ -1,4 +1,4 @@
-import LoginOptions from '../components/auth/LoginOptions';
+import LoginOptions from '../screens/auth/LoginOptions';
 import { connect } from 'react-redux';
 import { SignInAction } from '../actions/AuthAction';
 const mapStateToProps = state => {
