@@ -4,45 +4,42 @@ import React, {
   forwardRef,
   useCallback,
 } from "react";
-import { View, Text, Modal, StyleSheet } from "react-native";
+import { View, Text, Modal, StyleSheet, Alert } from "react-native";
 import { COLORS } from "../../../constants";
 import { fontRegular, fontRegularBold } from "../../../themes/fontFamily";
 import { Platform } from "../../../themes/platform";
 import RippleButton from "../../common/RippleButton";
 import FormInput from "../../utils/FormInput";
 import Row from "../../utils/Row";
+import * as Helper from '../../../utils/Helper';
 
 interface Props {
   value?: string;
-  handleEditNameShelf: (value: string) => void;
+  updateBookShelf: (bookShelf: any) => void;
 }
 
 const ModalEditNameBookshelf = forwardRef((props: Props, ref) => {
-  const [isVisible, setisVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [nameShelf, setNameShelf] = useState("");
-  const { value, handleEditNameShelf } = props;
+  const [bookShelf, setBookShelf] = useState({
+    name: '',
+    id: ''
+  });
 
-  const showModal = useCallback(() => {
-    setNameShelf(value || "");
-    setisVisible(!isVisible);
-  }, [isVisible, value]);
+
 
   useImperativeHandle(ref, () => ({
-    showModal,
+    showModal: (data: any) => {
+      setIsVisible(true);
+      setBookShelf({ ...bookShelf, name: data.ten_ke, id: data._id });
+    },
   }));
 
-  // const handleKeybroad = () => {
-  //   Keyboard.dismiss();
-  // };
-
-  const onChangeText = useCallback((txt: string) => {
-    setNameShelf(txt);
-  }, []);
-
-  const handleConfirm = useCallback(() => {
-    handleEditNameShelf(nameShelf || "");
-    setisVisible(!isVisible);
-  }, [handleEditNameShelf, isVisible, nameShelf]);
+  const handleConfirm = async () => {
+    const token = await Helper.getToken();
+    props.updateBookShelf({ token, bookShelf });
+    setIsVisible(false);
+  }
 
   return (
     <Modal visible={isVisible} transparent={true}>
@@ -52,11 +49,11 @@ const ModalEditNameBookshelf = forwardRef((props: Props, ref) => {
           <FormInput
             label={"Tên mới"}
             autoFocus
-            value={nameShelf}
-            onChangText={onChangeText}
+            value={bookShelf.name}
+            onChangText={(text) => setBookShelf({ ...bookShelf, name: text })}
           />
           <Row style={styles.styWrapBtn}>
-            <RippleButton onPress={showModal}>
+            <RippleButton onPress={() => setIsVisible(false)}>
               <View style={styles.styBtn}>
                 <Text style={styles.styTxtBtn}>Huỷ</Text>
               </View>

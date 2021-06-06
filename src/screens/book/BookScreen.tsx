@@ -17,7 +17,11 @@ interface BookScreenProps {
   loading: boolean,
   booksShelf: any,
   getBooksShelf: (payload: any) => void,
-  addBookShelf: (bookShefl: any) => void
+  addBookShelf: (bookShefl: any) => void,
+  updateBookShelf: (bookShefl: any) => void,
+  deleteBookShelf: (payload: any) => void,
+  searchBookShelf: (name: string) => void,
+
 }
 
 const BookScreen = (props: BookScreenProps) => {
@@ -27,7 +31,7 @@ const BookScreen = (props: BookScreenProps) => {
   const navigation = useNavigation();
   const refModalEdit: any = useRef();
   const refModalEditNameBookshelf: any = useRef();
-  const [itemEdit, setItemEdit] = useState({ nameShelf: "", shelfId: "" });
+  const [itemEdit, setItemEdit] = useState({ ten_ke: "", _id: "" });
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -45,42 +49,36 @@ const BookScreen = (props: BookScreenProps) => {
   };
 
   const onLongPress = (item: any) => () => {
+    console.log(item);
     setItemEdit(item);
     refModalEdit.current.onOpen();
   };
 
   const openEditName = () => {
     refModalEdit.current.onClose();
-    refModalEditNameBookshelf.current.showModal();
+    refModalEditNameBookshelf.current.showModal(itemEdit);
   };
 
   const openDelete = () => {
-    Alert.alert('Thông báo', `Bạn có muốn xoá kệ ${itemEdit.nameShelf}`, [
-      {
-        text: 'Xoá',
-      },
-      {
-        text: 'Huỷ',
-      },
-    ]);
-  };
-
-  const handleEditNameShelf = useCallback(
-    (nameNew: string) => {
-      const { shelfId } = itemEdit;
-      const dataEdit = data.map((item) => {
-        if (item.shelfId == shelfId) {
-          return {
-            ...item,
-            nameShelf: nameNew,
-          };
+    Alert.alert(
+      "Thông báo",
+      `Bạn có muốn xoá kệ ${itemEdit.ten_ke}`,
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        {
+          text: "OK", onPress: async () => {
+            const token = await Helper.getToken();
+            props.deleteBookShelf({ id: itemEdit._id, token });
+          }
         }
-        return item;
-      });
-      setData(dataEdit);
-    },
-    [data, itemEdit]
-  );
+      ],
+      { cancelable: false }
+    );
+  };
 
   return (
     <View style={styles.contain}>
@@ -120,7 +118,7 @@ const BookScreen = (props: BookScreenProps) => {
       <ModalEditNameBookshelf
         ref={refModalEditNameBookshelf}
         value={itemEdit.nameShelf}
-        handleEditNameShelf={handleEditNameShelf}
+        updateBookShelf={props.updateBookShelf}
       />
     </View>
   );

@@ -1,7 +1,8 @@
 import BookScreen from './BookScreen';
 import { connect } from 'react-redux';
 import {
-    getBookShelfAction, updateBookShelfAction, addBookShelfAction, deleteBookShelfAction
+    getBookShelfAction, updateBookShelfAction, addBookShelfAction,
+    deleteBookShelfAction
 } from '../../actions/BookShelfAction';
 
 const mapStateToProps = (state: any) => {
@@ -16,7 +17,7 @@ const mapDispatchToProps = (dispatch: any) => {
         getBooksShelf: (payload: any) => dispatch(getBookShelfAction(payload)),
         addBookShelf: (payload: any) => dispatch(addBookShelfAction(payload)),
         updateBookShelf: (payload: any) => dispatch(updateBookShelfAction(payload)),
-        deleteBooksShelf: (payload: any) => dispatch(deleteBookShelfAction(payload)),
+        deleteBookShelf: (payload: any) => dispatch(deleteBookShelfAction(payload)),
     }
 }
 

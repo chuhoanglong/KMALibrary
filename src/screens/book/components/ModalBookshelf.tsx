@@ -14,6 +14,7 @@ import { Platform } from '../../../themes/platform';
 import RippleButton from '../../common/RippleButton';
 import FormInput from '../../utils/FormInput';
 import Row from '../../utils/Row';
+import * as Helper from '../../../utils/Helper';
 
 interface ModalBookshelfProps {
     addBookShelf: (bookShelf: any) => void
@@ -22,7 +23,7 @@ interface ModalBookshelfProps {
 const ModalBookshelf = forwardRef((props: ModalBookshelfProps, ref) => {
     const [isVisible, setisVisible] = useState(false);
     const [bookShelf, setBookShelf] = useState({
-        name: ''
+        name: '',
     });
 
     const showModal = () => {
@@ -33,10 +34,11 @@ const ModalBookshelf = forwardRef((props: ModalBookshelfProps, ref) => {
         showModal,
     }));
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
         if (bookShelf.name != '') {
             showModal();
-            props.addBookShelf(bookShelf);
+            const token = await Helper.getToken();
+            props.addBookShelf({ token, bookShelf });
         }
     }
 

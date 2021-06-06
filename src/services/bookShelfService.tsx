@@ -46,12 +46,11 @@ const getBookShelf = async (payload: BookShelfProps) => {
 
 interface BookShelfProps {
     token: string,
-    ten_ke: string,
-    tong_so_sach: number,
-    da_muon: number
+    bookShelf: any
 }
 
 const addBookshelf = async (payload: BookShelfProps) => {
+    console.log(payload);
     if (__DEV__) {
         await delay(1000);
         return {
@@ -65,29 +64,44 @@ const addBookshelf = async (payload: BookShelfProps) => {
             },
         }
     }
-    const { token, ten_ke, tong_so_sach, da_muon } = payload;
+    const { token, bookShelf } = payload;
+    const postData = {
+        ten_ke: bookShelf.name,
+        tong_so_sach: 0,
+        da_muon: 0
+    }
     let response = await fetch(`${BASE_URL}kma/bookshelf/add`, {
         method: 'POST',
         headers: headersJwt(token),
-        body: JSON.stringify({ ten_ke, tong_so_sach, da_muon })
+        body: JSON.stringify(postData)
     });
     let responseJson = await response.json();
     return responseJson;
 }
 
 
-interface UpdateBookShelfProps {
-    token: string,
-    id: string,
-    ten_ke: string
-}
-
-const updateBookShelf = async (payload: UpdateBookShelfProps) => {
-    const { token, id, ten_ke } = payload;
+const updateBookShelf = async (payload: any) => {
+    console.log(payload);
+    const { token, bookShelf } = payload;
+    const { id, name } = bookShelf;
+    if (__DEV__) {
+        await delay(200);
+        return {
+            status: 200,
+            data: {
+                _id: id,
+                da_muon: 5,
+                ten_ke: name,
+                tong_so_sach: 20,
+                __v: 0
+            }
+        }
+    }
+    return;
     let response = await fetch(`${BASE_URL}kma/bookshelf/edit`, {
         method: 'POST',
         headers: headersJwt(token),
-        body: JSON.stringify({ id, ten_ke })
+        body: JSON.stringify({ id, ten_ke: name })
     });
     let responseJson = await response.json();
     return responseJson;
@@ -101,6 +115,16 @@ interface DeleteBookShelfProps {
 
 const deleteBookShelf = async (payload: DeleteBookShelfProps) => {
     const { token, id } = payload;
+    console.log(payload);
+
+    if (__DEV__) {
+        await delay(500);
+        return {
+            status: 200,
+            data: []
+        }
+    }
+    return;
     let response = await fetch(`${BASE_URL}kma/bookshelf/delete`, {
         method: 'POST',
         headers: headersJwt(token),

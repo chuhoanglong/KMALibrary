@@ -35,8 +35,12 @@ function* addBookShelf(action: any) {
 
 function* updateBookShelf(action: any) {
     try {
-        let response = yield bookShelfService.addBookshelf(action.payload);
-        yield put(updateBookShelfSuccessAction(response));
+        let response = yield bookShelfService.updateBookShelf(action.payload);
+        if (response && response.status == 200) {
+            yield put(updateBookShelfSuccessAction(response.data));
+        } else {
+            yield put(updateBookShelfFailureAction({ message: 'Error' }));
+        }
     } catch (error) {
         yield put(updateBookShelfFailureAction(error));
     }
@@ -45,8 +49,12 @@ function* updateBookShelf(action: any) {
 
 function* deleteBookShelf(action: any) {
     try {
-        let response = yield bookShelfService.addBookshelf(action.payload);
-        yield put(deleteBookShelfSuccessAction(response));
+        let response = yield bookShelfService.deleteBookShelf(action.payload);
+        if (response && response.status == 200) {
+            yield put(deleteBookShelfSuccessAction(response));
+        } else {
+            yield put(deleteBookShelfFailureAction({ message: 'Error' }));
+        }
     } catch (error) {
         yield put(deleteBookShelfFailureAction(error));
     }
