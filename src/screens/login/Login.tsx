@@ -8,19 +8,18 @@ import {
   StyleSheet,
   TextInput
 } from "react-native";
-import RippleButton from "../common/RippleButton";
-import styled from "styled-components";
 import HeaderNavigation from '../../components/HeaderNavigation';
 import FastImage from "react-native-fast-image";
-import InputPrimary from "../../components/Input";
-import SizeBoxed from "../../components/Material";
 import { Body } from "./componens/Body";
 import MaterialContainer from "../../components/Material";
 import Loading from "../../components/Loading";
-const { width, height } = Dimensions.get('window');
-export default class LoginOptions extends React.PureComponent {
 
-  constructor(props) {
+const { width, height } = Dimensions.get('window');
+
+
+export default class Login extends Component {
+  props: any;
+  constructor(props: any) {
     super(props);
   }
 

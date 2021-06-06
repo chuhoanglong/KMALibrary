@@ -15,7 +15,7 @@ const SizeBoxed = (props: SizeBoxedProps) => {
 }
 
 interface MaterialContainerProps {
-    children: JSX.Element
+    children: any
 }
 
 const MaterialContainer = (props: MaterialContainerProps) => {

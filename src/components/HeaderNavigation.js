@@ -12,16 +12,17 @@ export default class HeaderNavigation extends React.Component {
         super(props);
     }
 
-    // onGoback = () => {
-    //     requestAnimationFrame(() => {
-    //         const { goBack } = this.props;
-    //         if (goBack) {
-    //             this.props.goBack();
-    //         } else {
-    //             this.props.navigation.goBack();
-    //         }
-    //     });
-    // };
+    onGoback = () => {
+        requestAnimationFrame(() => {
+            const { goBack } = this.props;
+            if (goBack) {
+                this.props.goBack();
+            } else {
+                this.props.navigation.goBack();
+            }
+        });
+    };
+    
     render() {
         const {
             title,
