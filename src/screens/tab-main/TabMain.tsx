@@ -4,7 +4,7 @@ import HomeScreen from '../../container/HomeContainer';
 import QrCodeScreen from '../qrCode/QrCodeScreen';
 import BookScreen from '../book/BookScreen';
 import ReaderScreen from '../reader/ReaderScreen';
-import AccountScreen from '../account/AccountScreen';
+import AccountScreen from '../account/Index';
 import { TAB_NAME } from './TabConfig';
 import Icon from 'react-native-vector-icons/AntDesign';
 import ButtonTabQrCode from './ButtonTabQrCode';

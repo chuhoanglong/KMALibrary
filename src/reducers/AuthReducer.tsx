@@ -1,7 +1,9 @@
 import * as Types from '../constants/Type';
+import { saveToken } from '../utils/Helper';
 
 let initState = {
-    loading: false,
+    loading: true,
+    isSigning: false,
     isSignedIn: false,
 }
 
@@ -10,17 +12,34 @@ export default function AuthReducer(state = initState, action: any) {
         case Types.SIGN_IN:
             return {
                 ...state,
-                loading: true,
+                isSigning: true,
+                isSignedIn: false,
             }
         case Types.SIGN_IN_SUCCESS:
+            saveToken(action.data.accesstoken);
             return {
                 ...state,
-                loading: false,
+                isSigning: false,
+                isSignedIn: true
             }
         case Types.SIGN_IN_FAILURE:
             return {
                 ...state,
-                loading: false,
+                isSigning: false,
+                isSignedIn: false
+            }
+
+        case Types.SIGN_OUT:
+            saveToken('');
+            return {
+                ...state,
+                isSignedIn: false
+            }
+        case Types.RESTORE_TOKEN:
+            return {
+                ...state,
+                isSignedIn: action.isSignedIn,
+                loading: false
             }
         default:
             return state;

@@ -15,3 +15,12 @@ export const signInFailureAction = (error: any) => ({
     error
 });
 
+export const signOutAction = (payload: any) => ({
+    type: Types.SIGN_OUT,
+});
+
+export const restoreTokenAction = (isSignedIn: boolean) => ({
+    type: Types.RESTORE_TOKEN,
+    isSignedIn: isSignedIn
+})
+

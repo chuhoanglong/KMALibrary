@@ -16,6 +16,7 @@ import InputPrimary from "../../components/Input";
 import SizeBoxed from "../../components/Material";
 import { Body } from "./componens/Body";
 import MaterialContainer from "../../components/Material";
+import Loading from "../../components/Loading";
 const { width, height } = Dimensions.get('window');
 export default class LoginOptions extends React.PureComponent {
 
@@ -24,7 +25,7 @@ export default class LoginOptions extends React.PureComponent {
   }
 
   render() {
-    const { signIn, navigation } = this.props;
+    const { signIn, navigation, isSigning } = this.props;
     return (
       <MaterialContainer>
         <HeaderNavigation
@@ -36,6 +37,9 @@ export default class LoginOptions extends React.PureComponent {
           source={require('../../assets/logos/logo_login.png')}
           style={styles.widthImg} />
         <Body signIn={signIn} />
+        {isSigning &&
+          <Loading />
+        }
       </MaterialContainer>
     );
   }

@@ -1,19 +1,43 @@
 import React, { useState, useEffect, useReducer } from 'react';
-import { } from 'react-native';
+import { Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import AppNavigator from './AppNavigator';
 import AuthNavigator from './AuthNavigator';
+import * as Helper from '../utils/Helper';
+import { restoreTokenAction } from '../actions/AuthAction';
+import SplashScreen from '../screens/splash/SplashScreen';
 
-class Navigator extends React.Component {
-    constructor(props) {
+interface NavigatorProps {
+    props: any
+}
+
+interface NavigatorState {
+
+}
+
+class Navigator extends React.Component<NavigatorProps, NavigatorState> {
+    props: any;
+    constructor(props: any) {
         super(props);
         this.state = {
         }
     }
 
+    componentDidMount = async () => {
+        let token = await Helper.getToken();
+        if (token != '' && token != null) {
+            this.props.restoreToken(true);
+        } else {
+            this.props.restoreToken(false);
+        }
+    }
+
     render() {
-        const { isSignedIn } = this.props;
+        const { isSignedIn, loading } = this.props;
+        if (loading) {
+            return <SplashScreen />
+        }
         return (
             <NavigationContainer>
                 {
@@ -28,10 +52,18 @@ class Navigator extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
     return {
-        isSignedIn: state.auth.isSignedIn
+        isSignedIn: state.auth.isSignedIn,
+        loading: state.auth.loading
     }
 }
 
-export default connect(mapStateToProps, null)(Navigator);
+
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        restoreToken: (isSignedIn: boolean) => dispatch(restoreTokenAction(isSignedIn))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigator);
