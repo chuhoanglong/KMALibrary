@@ -2,11 +2,11 @@ import _ from "lodash";
 import { Row } from "native-base";
 import React, { Component } from "react";
 import { View, Text, StyleSheet, FlatList, Dimensions, Alert } from 'react-native';
-import { COLORS } from "../../constants";
-import { fontRegular, fontRegularBold } from "../../themes/fontFamily";
-import { Platform } from "../../themes/platform";
-import { shadow } from "../common/Common";
-import RippleButton from '../common/RippleButton';
+import { COLORS } from "../../../constants";
+import { fontRegular, fontRegularBold } from "../../../themes/fontFamily";
+import { Platform } from "../../../themes/platform";
+import { shadow } from "../../common/Common";
+import RippleButton from '../../common/RippleButton';
 const { width, height } = Dimensions.get('window');
 export default class ListBookShelf extends Component {
 
@@ -15,7 +15,6 @@ export default class ListBookShelf extends Component {
     }
 
     renderItem = ({ item }) => {
-
         return (
             <RippleButton
                 onPress={this.goToBookShelfDetail(item)}
@@ -23,14 +22,14 @@ export default class ListBookShelf extends Component {
                 onLongPress={this.props.onLongPress(item)}
             >
                 <View style={[styles.styWrapElement, shadow]}>
-                    <Text style={styles.styTxtName} numberOfLines={1}>{item.nameShelf}</Text>
+                    <Text style={styles.styTxtName} numberOfLines={1}>{item.ten_ke}</Text>
                     <Row style={{ width: '100%', height: 30, }}>
                         <Text style={[styles.styTxtNumber, { flex: 1 }]} numberOfLines={1}>Tổng số sách: </Text>
-                        <Text style={styles.styTxtNumber} numberOfLines={1}>{item.totalBook}</Text>
+                        <Text style={styles.styTxtNumber} numberOfLines={1}>{item.tong_so_sach}</Text>
                     </Row>
                     <Row style={{ width: '100%', height: 30, }}>
                         <Text style={[styles.styTxtNumber, { flex: 1 }]} numberOfLines={1}>Số sách cho mượn: </Text>
-                        <Text style={styles.styTxtNumber} numberOfLines={1}>{item.totalReader}</Text>
+                        <Text style={styles.styTxtNumber} numberOfLines={1}>{item.da_muon}</Text>
                     </Row>
                 </View>
             </RippleButton>

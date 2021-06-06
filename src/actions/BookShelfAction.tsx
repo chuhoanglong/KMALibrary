@@ -1,5 +1,20 @@
 import * as Types from '../constants/Type';
 
+export const getBookShelfAction = (payload: any) => ({
+    type: Types.GET_BOOK_SHELF,
+    payload: payload
+});
+
+export const getBookShelfSuccessAction = (data: any) => ({
+    type: Types.GET_BOOK_SHELF_SUCCESS,
+    data
+});
+
+export const getBookShelfFailureAction = (error: any) => ({
+    type: Types.GET_BOOK_SHELF_FAILURE,
+    error
+});
+
 export const addBookShelfAction = (payload: any) => ({
     type: Types.ADD_BOOK_SHELF,
     payload: payload

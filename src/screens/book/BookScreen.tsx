@@ -1,24 +1,41 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState, useEffect } from 'react';
 import { View, StyleSheet, Alert } from 'react-native';
 import { useNavigation } from "@react-navigation/core";
 import HeaderScreen from "../common/Header";
 import Search from "../utils/Search";
 import OptionTab from "../utils/OptionTab";
-import ListBookShelf from "./ListBookShelf";
-import ModalFilter from "./ModalFilter";
-import ModalBookshelf from './ModalBookshelf';
+import ListBookShelf from "./components/ListBookShelf";
+import ModalFilter from "./components/ModalFilter";
+import ModalBookshelf from './components/ModalBookshelf';
 import { dataBookShelf } from './__mockdata';
-import ModalEdit from './ModalEdit';
-import ModalEditNameBookshelf from './ModalEditNameBookshelf';
+import ModalEdit from './components/ModalEdit';
+import ModalEditNameBookshelf from './components/ModalEditNameBookshelf';
+import * as Helper from '../../utils/Helper';
 
-const BookScreen = () => {
+interface BookScreenProps {
+  booksShelf: any,
+  getBooksShelf: (payload: any) => void
+}
+
+const BookScreen = (props: BookScreenProps) => {
+  const { booksShelf } = props;
   const refModalFilter: any = useRef();
   const refModalBookshelf: any = useRef();
   const navigation = useNavigation();
   const refModalEdit: any = useRef();
   const refModalEditNameBookshelf: any = useRef();
   const [itemEdit, setItemEdit] = useState({ nameShelf: "", shelfId: "" });
-  const [data, setData] = useState(dataBookShelf);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getBooksShelf();
+  }, []);
+
+
+  const getBooksShelf = async () => {
+    const token = await Helper.getToken();
+    props.getBooksShelf({ token });
+  }
 
   const onPressAdd = () => {
     navigation.navigate('AppStack', { screen: 'AddBook' });
@@ -80,7 +97,7 @@ const BookScreen = () => {
         labelSort={'Sắp xếp'}
       />
       <ListBookShelf
-        data={data}
+        data={booksShelf}
         navigation={navigation}
         onLongPress={onLongPress}
       />

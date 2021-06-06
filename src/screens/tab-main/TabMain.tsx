@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../../container/HomeContainer';
 import QrCodeScreen from '../qrCode/QrCodeScreen';
-import BookScreen from '../book/BookScreen';
+import BookScreen from '../book/Index';
 import ReaderScreen from '../reader/ReaderScreen';
 import AccountScreen from '../account/Index';
 import { TAB_NAME } from './TabConfig';

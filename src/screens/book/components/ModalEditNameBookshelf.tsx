@@ -5,12 +5,12 @@ import React, {
   useCallback,
 } from "react";
 import { View, Text, Modal, StyleSheet } from "react-native";
-import { COLORS } from "../../constants";
-import { fontRegular, fontRegularBold } from "../../themes/fontFamily";
-import { Platform } from "../../themes/platform";
-import RippleButton from "../common/RippleButton";
-import FormInput from "../utils/FormInput";
-import Row from "../utils/Row";
+import { COLORS } from "../../../constants";
+import { fontRegular, fontRegularBold } from "../../../themes/fontFamily";
+import { Platform } from "../../../themes/platform";
+import RippleButton from "../../common/RippleButton";
+import FormInput from "../../utils/FormInput";
+import Row from "../../utils/Row";
 
 interface Props {
   value?: string;

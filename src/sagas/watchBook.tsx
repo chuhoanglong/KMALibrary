@@ -3,6 +3,16 @@ import * as Types from '../constants/Type';
 import * as bookService from '../services/bookService';
 import { signInSuccessAction, signInFailureAction } from '../actions/AuthAction';
 
+function* getBooks(action: any) {
+    try {
+        let response = yield bookService.getBooks(action.payload);
+        yield put(signInSuccessAction(response));
+    } catch (error) {
+        yield put(signInFailureAction(error));
+    }
+}
+
+
 function* addBook(action: any) {
     try {
         let response = yield bookService.addBook(action.payload.token, action.payload);
@@ -41,8 +51,9 @@ function* searchBook(action: any) {
 
 
 export function* watchBook() {
+    yield takeLatest(Types.GET_BOOK, getBooks);
     yield takeLatest(Types.ADD_BOOK, addBook);
-    yield takeLatest(Types.ADD_BOOK, updateBook);
-    yield takeLatest(Types.ADD_BOOK, deleteBook);
-    yield takeLatest(Types.ADD_BOOK, searchBook);
+    yield takeLatest(Types.UPDATE_BOOK, updateBook);
+    yield takeLatest(Types.DELETE_BOOK, deleteBook);
+    yield takeLatest(Types.SEARCH_BOOK, searchBook);
 }

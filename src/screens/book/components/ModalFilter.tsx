@@ -10,11 +10,11 @@ import {
     SafeAreaView
 } from 'react-native';
 const { width, height } = Dimensions.get('window');
-import RippleButton from '../common/RippleButton';
+import RippleButton from '../../common/RippleButton';
 import IconFeather from 'react-native-vector-icons/Feather';
-import Row from '../utils/Row';
-import OptionSelecter from '../utils/OptionSelecter';
-import { dataAuthor, dataCategory, dataLanguage, dataPublishing, dataReadingStatus, dataYearPublishing } from './__mockdata';
+import Row from '../../utils/Row';
+import OptionSelecter from '../../utils/OptionSelecter';
+import { dataAuthor, dataCategory, dataLanguage, dataPublishing, dataReadingStatus, dataYearPublishing } from '../__mockdata';
 export default class ModalFilter extends Component {
 
     state = {

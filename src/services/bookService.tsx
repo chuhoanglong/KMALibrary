@@ -1,6 +1,20 @@
 import { headers, headersJwt } from "./network"
 import { BASE_URL } from "../constants/Setting";
 
+interface BooksProps {
+    token: string
+}
+
+const getBooks = async (payload: BooksProps) => {
+    const { token } = payload;
+    let response = await fetch(`${BASE_URL}kma/books`, {
+        method: 'GET',
+        headers: headersJwt(token),
+    });
+    let responseJson = await response.json();
+    return responseJson;
+}
+
 interface AddBookProps {
     ten_sach: string,
     ten_ke: string,
@@ -21,7 +35,7 @@ interface AddBookProps {
 
 const addBook = async (token: string, book: AddBookProps) => {
     let response = await fetch(`${BASE_URL}kma/books/add`, {
-        method: ' POST',
+        method: 'POST',
         headers: headersJwt(token),
         body: JSON.stringify(book)
     });
@@ -52,7 +66,7 @@ interface BookProps {
 
 const updateBook = async (token: string, book: BookProps) => {
     let response = await fetch(`${BASE_URL}kma/books/edit`, {
-        method: ' POST',
+        method: 'POST',
         headers: headersJwt(token),
         body: JSON.stringify(book)
     });
@@ -63,7 +77,7 @@ const updateBook = async (token: string, book: BookProps) => {
 
 const deleteBook = async (token: string, id: string) => {
     let response = await fetch(`${BASE_URL}kma/books/delete`, {
-        method: ' POST',
+        method: 'POST',
         headers: headersJwt(token),
         body: JSON.stringify({ id })
     });
@@ -74,7 +88,7 @@ const deleteBook = async (token: string, id: string) => {
 
 const searchBook = async (token: string, ma_sach: string) => {
     let response = await fetch(`${BASE_URL}kma/books/search`, {
-        method: ' POST',
+        method: 'POST',
         headers: headersJwt(token),
         body: JSON.stringify({ ma_sach })
     });
@@ -84,6 +98,7 @@ const searchBook = async (token: string, ma_sach: string) => {
 
 
 export {
+    getBooks,
     addBook,
     updateBook,
     deleteBook,

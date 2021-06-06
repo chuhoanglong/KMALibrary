@@ -1,13 +1,13 @@
 import React, { forwardRef, useRef, useState, useImperativeHandle } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Modal from 'react-native-modal';
-import { COLORS } from '../../constants';
-import { Platform } from '../../themes/platform';
+import { COLORS } from '../../../constants';
+import { Platform } from '../../../themes/platform';
 import { Modalize } from 'react-native-modalize';
-import { fontRegular, fontRegularBold } from '../../themes/fontFamily';
-import Row from '../utils/Row';
+import { fontRegular, fontRegularBold } from '../../../themes/fontFamily';
+import Row from '../../utils/Row';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
-import RippleButton from '../common/RippleButton';
+import RippleButton from '../../common/RippleButton';
 
 interface Props {
     openEditName?: () => void;
