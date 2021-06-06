@@ -27,6 +27,7 @@ const ModalBookshelf = forwardRef((props: ModalBookshelfProps, ref) => {
     });
 
     const showModal = () => {
+        setBookShelf({ ...bookShelf, name: '' });
         setisVisible(!isVisible);
     }
 

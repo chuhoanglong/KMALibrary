@@ -71,6 +71,7 @@ const BookScreen = (props: BookScreenProps) => {
         },
         {
           text: "OK", onPress: async () => {
+            refModalEdit.current.onClose();
             const token = await Helper.getToken();
             props.deleteBookShelf({ id: itemEdit._id, token });
           }

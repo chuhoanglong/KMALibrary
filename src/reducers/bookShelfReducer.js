@@ -27,13 +27,12 @@ export default function bookShelfReducer(state = initState, action) {
         case Types.ADD_BOOK_SHELF_SUCCESS:
             return {
                 ...state,
-                booksShelf: [...state.booksShelf, action.data]
+                booksShelf: action.data
             }
         case Types.UPDATE_BOOK_SHELF_SUCCESS:
-            const postUpdate = action.data;
             return {
                 ...state,
-                booksShelf: updateBookShelf(state.booksShelf, postUpdate)
+                booksShelf: action.data
             }
         case Types.DELETE_BOOK_SHELF_SUCCESS:
             return {

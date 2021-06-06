@@ -6,7 +6,8 @@ import {
   SafeAreaView,
   Dimensions,
   StyleSheet,
-  TextInput
+  TextInput,
+  Alert
 } from "react-native";
 import HeaderNavigation from '../../components/HeaderNavigation';
 import FastImage from "react-native-fast-image";
@@ -21,6 +22,16 @@ export default class Login extends Component {
   props: any;
   constructor(props: any) {
     super(props);
+  }
+
+  componentDidUpdate = (prevProps: any, nextState: any) => {
+    if (prevProps.isSigning != this.props.isSigning
+      && !this.props.isSigning
+    ) {
+      if(this.props.error){
+        Alert.alert('', this.props.error);
+      }
+    }
   }
 
   render() {

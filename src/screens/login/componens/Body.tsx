@@ -27,6 +27,7 @@ export const Body = (props: SignInProps) => {
                 <SizeBoxed height={20} />
                 <InputPrimary
                     value={user.password}
+                    secureTextEntry={true}
                     label={'Mật khẩu'}
                     onChangeText={(text) => setUser({ ...user, password: text })}
                 />

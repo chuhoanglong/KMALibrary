@@ -5,6 +5,7 @@ let initState = {
     loading: true,
     isSigning: false,
     isSignedIn: false,
+    error: null
 }
 
 export default function AuthReducer(state = initState, action: any) {
@@ -26,7 +27,8 @@ export default function AuthReducer(state = initState, action: any) {
             return {
                 ...state,
                 isSigning: false,
-                isSignedIn: false
+                isSignedIn: false,
+                error: action.error.message
             }
 
         case Types.SIGN_OUT:

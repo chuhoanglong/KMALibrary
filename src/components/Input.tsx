@@ -4,18 +4,21 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 interface InputProps {
     value: string,
     label: string,
+    secureTextEntry?: boolean,
     onChangeText: (text: string) => void
 }
 
 const InputPrimary = (props: InputProps) => {
-    const { onChangeText, value, label } = props;
+    const { onChangeText, value, label, secureTextEntry = false } = props;
     return (
         <View style={styles.formInput}>
             <Text style={styles.textTopPla}>{label}</Text>
             <TextInput
                 placeholder='Tên đăng nhập'
                 placeholderTextColor='#C4C4C4'
+                autoCapitalize={'none'}
                 style={styles.textInput}
+                secureTextEntry={secureTextEntry}
                 value={value}
                 onChangeText={onChangeText}
             />

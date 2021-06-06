@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { signInAction } from '../../actions/AuthAction';
 const mapStateToProps = (state: any) => {
     return {
-        isSigning: state.auth.isSigning
+        isSigning: state.auth.isSigning,
+        error: state.auth.error
     }
 }
 
