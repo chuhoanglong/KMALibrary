@@ -11,14 +11,17 @@ import { dataBookShelf } from './__mockdata';
 import ModalEdit from './components/ModalEdit';
 import ModalEditNameBookshelf from './components/ModalEditNameBookshelf';
 import * as Helper from '../../utils/Helper';
+import Loading from '../../components/Loading';
 
 interface BookScreenProps {
+  loading: boolean,
   booksShelf: any,
-  getBooksShelf: (payload: any) => void
+  getBooksShelf: (payload: any) => void,
+  addBookShelf: (bookShefl: any) => void
 }
 
 const BookScreen = (props: BookScreenProps) => {
-  const { booksShelf } = props;
+  const { booksShelf, loading } = props;
   const refModalFilter: any = useRef();
   const refModalBookshelf: any = useRef();
   const navigation = useNavigation();
@@ -97,12 +100,18 @@ const BookScreen = (props: BookScreenProps) => {
         labelSort={'Sắp xếp'}
       />
       <ListBookShelf
+        loading={loading}
         data={booksShelf}
         navigation={navigation}
         onLongPress={onLongPress}
       />
+      {loading &&
+        <Loading />
+      }
       <ModalFilter ref={refModalFilter} />
-      <ModalBookshelf ref={refModalBookshelf} />
+      <ModalBookshelf
+        addBookShelf={props.addBookShelf}
+        ref={refModalBookshelf} />
       <ModalEdit
         ref={refModalEdit}
         openEditName={openEditName}

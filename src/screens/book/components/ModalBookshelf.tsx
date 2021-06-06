@@ -5,7 +5,8 @@ import {
     Modal,
     StyleSheet,
     Keyboard,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    Alert
 } from 'react-native';
 import { COLORS } from '../../../constants';
 import { fontRegular, fontRegularBold } from '../../../themes/fontFamily';
@@ -14,8 +15,15 @@ import RippleButton from '../../common/RippleButton';
 import FormInput from '../../utils/FormInput';
 import Row from '../../utils/Row';
 
-const ModalBookshelf = forwardRef(({ }, ref) => {
+interface ModalBookshelfProps {
+    addBookShelf: (bookShelf: any) => void
+}
+
+const ModalBookshelf = forwardRef((props: ModalBookshelfProps, ref) => {
     const [isVisible, setisVisible] = useState(false);
+    const [bookShelf, setBookShelf] = useState({
+        name: ''
+    });
 
     const showModal = () => {
         setisVisible(!isVisible);
@@ -24,6 +32,13 @@ const ModalBookshelf = forwardRef(({ }, ref) => {
     useImperativeHandle(ref, () => ({
         showModal,
     }));
+
+    const onSubmit = () => {
+        if (bookShelf.name != '') {
+            showModal();
+            props.addBookShelf(bookShelf);
+        }
+    }
 
     const handleKeybroad = () => {
         Keyboard.dismiss();
@@ -37,6 +52,8 @@ const ModalBookshelf = forwardRef(({ }, ref) => {
                     <FormInput
                         label={'Tên kệ sách'}
                         autoFocus
+                        value={bookShelf.name}
+                        onChangText={(value) => setBookShelf({ name: value.trimStart() })}
                     />
                     <Row style={styles.styWrapBtn}>
                         <RippleButton onPress={showModal}>
@@ -44,7 +61,7 @@ const ModalBookshelf = forwardRef(({ }, ref) => {
                                 <Text style={styles.styTxtBtn}>Huỷ</Text>
                             </View>
                         </RippleButton>
-                        <RippleButton >
+                        <RippleButton onPress={onSubmit}>
                             <View style={styles.styBtn}>
                                 <Text style={styles.styTxtBtn}>Đồng ý</Text>
                             </View>

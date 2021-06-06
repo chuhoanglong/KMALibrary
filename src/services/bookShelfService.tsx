@@ -15,7 +15,7 @@ interface BookShelfProps {
 const getBookShelf = async (payload: BookShelfProps) => {
     const { token } = payload;
     if (__DEV__) {
-        await delay(1000);
+        await delay(200);
         return {
             status: 200,
             data: [
@@ -52,6 +52,19 @@ interface BookShelfProps {
 }
 
 const addBookshelf = async (payload: BookShelfProps) => {
+    if (__DEV__) {
+        await delay(1000);
+        return {
+            status: 200,
+            data: {
+                _id: "60a7dcddf2ea183d251b63e6",
+                da_muon: 5,
+                ten_ke: "Ke so 10",
+                tong_so_sach: 20,
+                __v: 0
+            },
+        }
+    }
     const { token, ten_ke, tong_so_sach, da_muon } = payload;
     let response = await fetch(`${BASE_URL}kma/bookshelf/add`, {
         method: 'POST',

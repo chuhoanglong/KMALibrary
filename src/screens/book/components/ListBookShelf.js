@@ -36,24 +36,25 @@ export default class ListBookShelf extends Component {
         );
     };
 
-    renderListEmptyComponent() {
+    renderListEmptyComponent(loading) {
         return (
-            <View style={styles.styWrapEmpty}>
-                <Text style={styles.styTxtEmpty}>Hiện tại chưa có kệ sách nào.</Text>
-                <Text style={styles.styTxtEmpty}>Hãy thêm mới kệ sách để dễ dàng quản lí.</Text>
-            </View>
+            loading ? null :
+                <View style={styles.styWrapEmpty}>
+                    <Text style={styles.styTxtEmpty}>Hiện tại chưa có kệ sách nào.</Text>
+                    <Text style={styles.styTxtEmpty}>Hãy thêm mới kệ sách để dễ dàng quản lí.</Text>
+                </View>
         );
     }
 
     render() {
-        const { data } = this.props;
+        const { data, loading } = this.props;
         return (
             <FlatList
                 data={data}
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={this.renderItem}
                 numColumns={2}
-                ListEmptyComponent={this.renderListEmptyComponent}
+                ListEmptyComponent={this.renderListEmptyComponent(loading)}
                 style={styles.contain}
                 contentContainerStyle={_.isEmpty(data) && { flex: 1 }}
                 showsVerticalScrollIndicator={false}

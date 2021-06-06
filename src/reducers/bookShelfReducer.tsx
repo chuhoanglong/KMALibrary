@@ -22,7 +22,13 @@ export default function bookShelfReducer(state = initState, action: any) {
             return {
                 ...state,
                 loading: false,
-                booksShelf:[]
+                booksShelf: []
+            }
+
+        case Types.ADD_BOOK_SHELF_SUCCESS:
+            return {
+                ...state,
+                booksShelf: [...state.booksShelf, action.data]
             }
 
         default:

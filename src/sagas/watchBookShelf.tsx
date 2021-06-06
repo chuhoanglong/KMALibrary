@@ -24,7 +24,10 @@ function* getBookShelf(action: any) {
 function* addBookShelf(action: any) {
     try {
         let response = yield bookShelfService.addBookshelf(action.payload);
-        yield put(addBookShelfSuccessAction(response));
+        if (response && response.status == 200)
+            yield put(addBookShelfSuccessAction(response.data));
+        else
+            yield put(addBookShelfFailureAction({ message: 'Error' }));
     } catch (error) {
         yield put(addBookShelfFailureAction(error));
     }
