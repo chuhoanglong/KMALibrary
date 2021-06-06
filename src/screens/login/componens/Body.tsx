@@ -3,6 +3,17 @@ import { View, Text, StyleSheet } from 'react-native'
 import InputPrimary from '../../../components/Input';
 import RippleButton from '../../common/RippleButton';
 import { SizeBoxed } from '../../../components/Material';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+
+
+const SingInSchema = Yup.object().shape({
+    email: Yup.string()
+        .email('Email không hợp lệ')
+        .required('Email không được để trống'),
+    password: Yup.string()
+        .required('Mật khẩu không được để trống'),
+});
 
 interface SignInProps {
     signIn: (user: any) => void
@@ -12,32 +23,50 @@ export const Body = (props: SignInProps) => {
     const { signIn } = props;
     const [user, setUser] = React.useState({ email: '', password: '' });
 
-    const onSignIn = () => {
-        signIn(user);
+    const onSignIn = (values: any) => {
+        const user = {
+            email: values.email,
+            password: values.password
+        }
+        signIn({ user });
     }
 
     return (
         <React.Fragment>
-            <View style={styles.wrapFormInput}>
-                <InputPrimary
-                    value={user.email}
-                    label={'Tên đăng nhập'}
-                    onChangeText={(text) => setUser({ ...user, email: text })}
-                />
-                <SizeBoxed height={20} />
-                <InputPrimary
-                    value={user.password}
-                    secureTextEntry={true}
-                    label={'Mật khẩu'}
-                    onChangeText={(text) => setUser({ ...user, password: text })}
-                />
-            </View>
-            <RippleButton
-                onPress={() => onSignIn()}
-                style={styles.viewLogin}
+            <Formik
+                initialValues={{ email: user.email, password: user.password }}
+                onSubmit={values => onSignIn(values)}
+                validationSchema={SingInSchema}
             >
-                <Text style={styles.txtLogin}>Đăng nhập</Text>
-            </RippleButton>
+                {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
+                    <>
+                        <View style={styles.wrapFormInput}>
+                            <InputPrimary
+                                value={values.email.trimStart()}
+                                label={'Tên đăng nhập'}
+                                placeholder={'Nhập tên đăng nhập'}
+                                onChangeText={handleChange('email')}
+                                error={errors.email && touched.email ? errors.email : ''}
+                            />
+                            <SizeBoxed height={20} />
+                            <InputPrimary
+                                value={values.password.trimStart()}
+                                secureTextEntry={true}
+                                label={'Mật khẩu'}
+                                placeholder={'Nhập mật khẩu'}
+                                onChangeText={handleChange('password')}
+                                error={errors.password && touched.password ? errors.password : ''}
+                            />
+                        </View>
+                        <RippleButton
+                            onPress={handleSubmit}
+                            style={styles.viewLogin}
+                        >
+                            <Text style={styles.txtLogin}>Đăng nhập</Text>
+                        </RippleButton>
+                    </>
+                )}
+            </Formik>
         </React.Fragment>
     );
 }
