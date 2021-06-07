@@ -29,7 +29,7 @@ export default class LoginOptions extends React.PureComponent {
             <Text style={styles.textTopPla}>Tên đăng nhập</Text>
             <TextInput
               placeholder='Tên đăng nhập'
-              placeholderTextColor='#C4C4C4'
+              placeholderTextColor='#828282'
               style={styles.textInput}
             // value={textSearch}
             // onChangeText={this.onChangeText}
@@ -40,7 +40,7 @@ export default class LoginOptions extends React.PureComponent {
             <Text style={styles.textTopPla}>Mật khẩu</Text>
             <TextInput
               placeholder='Mật khẩu'
-              placeholderTextColor='#C4C4C4'
+              placeholderTextColor='#828282'
               style={styles.textInput}
             // value={textSearch}
             // onChangeText={this.onChangeText}
@@ -101,7 +101,8 @@ const styles = StyleSheet.create({
   textInput: {
     backgroundColor: "#fff",
     padding: 13,
-    borderRadius: 20
+    borderRadius: 20,
+    color: '#000'
   }
 })
 
