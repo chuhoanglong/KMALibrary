@@ -59,15 +59,15 @@ export const Body = (props: SignInProps) => {
                             />
                         </View>
                         <RippleButton
-                            onPress={handleSubmit}
+                            onPress={() => handleSubmit()}
                             style={styles.viewLogin}
                         >
                             <Text style={styles.txtLogin}>Đăng nhập</Text>
-                        </RippleButton>
+                    </RippleButton>
                     </>
                 )}
             </Formik>
-        </React.Fragment>
+        </React.Fragment >
     );
 }
 
