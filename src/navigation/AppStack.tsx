@@ -1,4 +1,5 @@
 import React from 'react';
+import { View, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AddBookScreen from '../components/addBook/AddBookScreen';
 import GenerationQRCode from '../components/addBook/GenerationQRCode';
@@ -8,6 +9,8 @@ import { GESTURES_ENABLE, HEADER_ENABLE } from '../constants/Setting';
 import BookInfo from '../components/bookInfo/BookInfo';
 import InfoReader from '../components/InfoReader/InfoReader';
 import BookReaderDetail from '../components/bookReaderDetail/BookReaderDetail';
+import AddMember from '../components/account/AddMember'
+
 
 const Stack = createStackNavigator();
 
@@ -65,6 +68,14 @@ function AppStack() {
       <Stack.Screen
         name="BookReaderDetail"
         component={BookReaderDetail}
+        options={{
+          gestureEnabled: GESTURES_ENABLE,
+          headerShown: HEADER_ENABLE
+        }}
+      />
+      <Stack.Screen
+        name="AddMember"
+        component={AddMember}
         options={{
           gestureEnabled: GESTURES_ENABLE,
           headerShown: HEADER_ENABLE

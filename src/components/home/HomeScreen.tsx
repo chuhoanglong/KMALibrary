@@ -6,7 +6,7 @@ export default class HomeScreen extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <HeaderScreen />
+                <HeaderScreen notiBell={true}/>
                 <Text>HomeScreen</Text>
             </View>
         )

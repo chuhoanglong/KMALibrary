@@ -9,11 +9,16 @@ import {
 } from 'react-native';
 import HeaderScreen from '../common/Header';
 import StyleProfile from './StyleProfile';
+import { useNavigation } from "@react-navigation/core";
 const AccountScreen = () => {
-    const [text, setText] = useState('');
+    const [text, setText,] = useState('');
+    const navigation = useNavigation();
+    const onPressAdd = () => {
+        navigation.navigate('AppStack', { screen: 'AddMember' });
+    };
     return (
         <View style={{ flex: 1 }}>
-            <HeaderScreen />
+            <HeaderScreen addUser={true} navigation={navigation} onPressAdd={onPressAdd} />
             <ScrollView style={{ flex: 1 }}>
                 <View style={{ alignSelf: 'center' }}>
                     <View style={StyleProfile.viewAvatar}>
@@ -73,3 +78,4 @@ const AccountScreen = () => {
 }
 
 export default AccountScreen;
+

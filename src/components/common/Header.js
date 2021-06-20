@@ -1,15 +1,34 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableWithoutFeedback
+} from 'react-native';
 import RippleButton from './RippleButton';
-import Icon from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import { isIphoneX } from 'react-native-iphone-x-helper';
-const HeaderScreen = () => {
+import { useNavigation } from '@react-navigation/native';
+const HeaderScreen = (props) => {
+    const { addUser, notiBell } = props;
+    const navigation = useNavigation();
+    const { onPressAdd } = props;
     return (
         <View style={styles.styWrapHeader}>
             <Text style={styles.styLogo}>KMA Library</Text>
-            <RippleButton>
-                <Icon name={'bells'} size={25} />
-            </RippleButton>
+            {notiBell == true ?
+                <RippleButton>
+                    <Icon name={'bell'} size={25} />
+                </RippleButton>
+                : null
+            }
+            {addUser == true ?
+                <TouchableWithoutFeedback onPress={onPressAdd}
+                >
+                    <Icon name={'user-plus'} size={20} />
+                </TouchableWithoutFeedback>
+                : null
+            }
         </View>
     )
 }
