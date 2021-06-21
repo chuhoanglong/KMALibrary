@@ -22,7 +22,6 @@ export default class HeaderNavigation extends React.Component {
             }
         });
     };
-    
     render() {
         const {
             title,

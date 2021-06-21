@@ -13,6 +13,7 @@ import StyleProfile from './StyleProfile';
 import { useDispatch } from 'react-redux';
 import { signOutAction } from '../../actions/AuthAction';
 import { getRefreshToken } from '../../utils/Helper';
+import { useNavigation } from "@react-navigation/core";
 
 const AccountScreen = () => {
     const [text, setText] = useState('');
@@ -21,10 +22,13 @@ const AccountScreen = () => {
         const refreshToken = await getRefreshToken();
         dispatch(signOutAction({ token: refreshToken }));
     }
-
+    const navigation = useNavigation();
+    const onPressAdd = () => {
+        navigation.navigate('AppStack', { screen: 'AddMember' });
+    };
     return (
         <View style={{ flex: 1 }}>
-            <HeaderScreen />
+            <HeaderScreen addUser={true} navigation={navigation} onPressAdd={onPressAdd} />
             <ScrollView style={{ flex: 1 }}>
                 <View style={{ alignSelf: 'center' }}>
                     <View style={StyleProfile.viewAvatar}>
@@ -84,3 +88,4 @@ const AccountScreen = () => {
 }
 
 export default AccountScreen;
+
