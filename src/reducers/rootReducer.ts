@@ -1,10 +1,13 @@
 import { combineReducers } from 'redux';
 import initReducer from './initReducer';
 import AuthReducer from './AuthReducer';
-const appReducer = combineReducers({
+import bookShelfReducer from './bookShelfReducer';
+
+const RootReducer = combineReducers({
     init: initReducer,
     auth: AuthReducer,
+    booksShelf: bookShelfReducer
 });
 
-export default appReducer;
-
+export default RootReducer;
+export type RootState = ReturnType<typeof RootReducer>;

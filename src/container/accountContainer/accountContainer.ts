@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import AccountScreen from '../../components/account/AccountScreen';
+import AccountScreen from '../../screens/account/AccountScreen';
 
 const mapStateToProps = state => {
     return {

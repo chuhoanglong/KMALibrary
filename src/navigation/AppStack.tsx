@@ -1,13 +1,14 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import AddBookScreen from '../components/addBook/AddBookScreen';
-import GenerationQRCode from '../components/addBook/GenerationQRCode';
-import BookShelfDetail from '../components/bookShelfDetail/BookShelfDetail';
-import BorrowBooks from '../components/borrowBooks/BorrowBooks';
+import AddBookScreen from '../screens/addBook/AddBookScreen';
+import GenerationQRCode from '../screens/addBook/GenerationQRCode';
+import BookShelfDetail from '../screens/bookShelfDetail/BookShelfDetail';
+import BorrowBooks from '../screens/borrowBooks/BorrowBooks';
 import { GESTURES_ENABLE, HEADER_ENABLE } from '../constants/Setting';
-import BookInfo from '../components/bookInfo/BookInfo';
-import InfoReader from '../components/InfoReader/InfoReader';
-import BookReaderDetail from '../components/bookReaderDetail/BookReaderDetail';
+import BookInfo from '../screens/bookInfo/BookInfo';
+import InfoReader from '../screens/InfoReader/InfoReader';
+import BookReaderDetail from '../screens/bookReaderDetail/BookReaderDetail';
+import EditBookScreen from '../screens/addBook/EditBookScreen';
 
 const Stack = createStackNavigator();
 
@@ -65,6 +66,14 @@ function AppStack() {
       <Stack.Screen
         name="BookReaderDetail"
         component={BookReaderDetail}
+        options={{
+          gestureEnabled: GESTURES_ENABLE,
+          headerShown: HEADER_ENABLE
+        }}
+      />
+      <Stack.Screen
+        name="EditBookScreen"
+        component={EditBookScreen}
         options={{
           gestureEnabled: GESTURES_ENABLE,
           headerShown: HEADER_ENABLE
