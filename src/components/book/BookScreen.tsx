@@ -64,7 +64,7 @@ const BookScreen = () => {
 
   return (
     <View style={styles.contain}>
-      <HeaderScreen />
+      <HeaderScreen notiBell={true}/>
       <Search placeholder={'Tìm kiếm kệ sách'} />
       <OptionTab
         labelAddKS={'Thêm kệ'}
